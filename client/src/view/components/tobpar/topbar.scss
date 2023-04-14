@@ -1,0 +1,26 @@
+.navbar-brand{
+    font-family: 'Nunito', sans-serif;
+   font-weight: 300 !important;
+   color: black!important;
+   font-size: 20px;
+}
+.head{
+    font-size: 25px;
+    /* make our h1 tag larger */
+    font-family: sans-serif;
+    /* choosing our font */
+    background:  linear-gradient(#2E0249 52%, #9250bb 61%);
+    /* you can change the colors based on your preference */
+    background-clip: text;
+    /*add this line, it defines how far the background should extend within an element, here we set it to text */
+    -webkit-background-clip: text;
+    /* add this line, for browsers compatibility */
+    -webkit-text-fill-color: transparent;
+    /* specifies the fill color of text characters. We use transparent to use the background value as our text fill */
+  }
+.profile{
+    border-radius: 50%;
+}
+.nav-link{
+  color: rgb(29, 17, 203) !important;
+}

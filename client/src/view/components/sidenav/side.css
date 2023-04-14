@@ -1,0 +1,38 @@
+.sidenavmain{
+    background-color: #2E0249;
+   height:100vh;
+   padding: 10px;
+  top: 0;
+  left: 0;
+   position: sticky !important;
+}
+.sidebar-item:hover{
+    background-color: #BA94D1;
+    color: #2E0249 !important; 
+}
+/* .nav-link:hover{
+    color: #2E0249; 
+} */
+.sidebar-item{
+    width: 100%;
+   
+}
+
+
+.icon{
+    color: white;
+    font-size: 25px;
+}
+.title{
+    color: white;
+    font-size: 17px;
+    margin-top: 3px;
+}
+.menu{
+    border-bottom: 1px solid #BA94D1;
+}
+/* .nav-link.active{
+    background:#145DA0;
+    color: white;
+   
+  } */
