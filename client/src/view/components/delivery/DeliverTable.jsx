@@ -1,6 +1,6 @@
 import React,{useEffect, useMemo, useState} from 'react'
 import MaterialReactTable from 'material-react-table';
-import {getAllMaterial,delete_Material} from '../../../service/MaterialService'
+import {getAllDelivery,delete_Delivery} from '../../../service/DeliveryService'
 import { Box, IconButton } from '@mui/material';
 import {useNavigate } from 'react-router-dom'
 import {
@@ -9,18 +9,19 @@ import {
   Visibility as VisibilityIcon,
 } from '@mui/icons-material';
 import { Model } from '../../../shared/Model';
-import ViewMaterial from './ViewMaterial';
+import ViewDelivery from './ViewDelivery';
 import { Button } from 'react-bootstrap';
-const MaterialTable = () => {
-  let navigate =useNavigate()
-    const [materialdata, setMaterialdata] = useState([])
+
+const DeliverTable = () => {
+    let navigate =useNavigate()
+    const [deliverydata, setDeliverydata] = useState([])
     const [show, setShow] = useState(false);
     const [value, setValue] = useState([]);
     useEffect(() => {
-      material()
+      delivery()
     }, [])
-    const material = ()=>{
-     getAllMaterial().then((res)=>setMaterialdata(res.data.result))
+    const delivery = ()=>{
+        getAllDelivery().then((res)=>setDeliverydata(res.data.result))
     }
     const columns = useMemo(
       () => [
@@ -28,6 +29,10 @@ const MaterialTable = () => {
           accessorKey: 'materialname', //access nested data with dot notation
           header: 'Material Name',
         },
+        {
+            accessorKey: 'vasselname', //access nested data with dot notation
+            header: 'Vassel Name',
+          },
         {
           accessorKey: 'date',
           header: 'Purchase Date',
@@ -49,24 +54,24 @@ const MaterialTable = () => {
     // }
     const goEdit =(item)=>{
       console.log("item",item)
-      navigate('/updatematerial',{state:item})
+      navigate('/updatedelivery',{state:item})
     }
     const goDelete =(item)=>{
       console.log("item2",item)
       console.log(item._id)
-      delete_Material(item._id).then(console.log("deleted"))
+      delete_Delivery(item._id).then(console.log("deleted"))
      // navigate('/viewmaterial',{state:item})
     }
-   console.log("stockdata",materialdata)
+   console.log("stockdata",deliverydata)
    console.log("value",value)
    const handleClick = ()=>{
-    navigate('/creatematerial')
+    navigate('/createdelivery')
    }
 return (
   <div className='container'>
-       <h3 className="Title text-left my-2 mx-1">Material Purchase Details</h3>
+       <h3 className="Title text-left my-2 mx-1">Material Delivery Details</h3>
        <Button className='btn btn-info my-2' onClick={()=>{handleClick()}}>Add</Button>
-      <MaterialReactTable columns={columns} data={materialdata}
+      <MaterialReactTable columns={columns} data={deliverydata}
        enableStickyHeader
     muiTableContainerProps={{ sx: { maxHeight: '500px' } }}
     
@@ -123,11 +128,11 @@ return (
      onHide={()=>{setShow(false)}}
      title={<h2 className=" Title ml-2">View Product</h2>}
      >
-     <ViewMaterial onHide={()=>{setShow(false)}}  item={value}/>
+     <ViewDelivery onHide={()=>{setShow(false)}}  item={value}/>
 
     </Model>
       </div>
 )
 }
 
-export default MaterialTable
+export default DeliverTable

@@ -1,21 +1,22 @@
 import { useFormik } from 'formik';
 import { Col, Row } from 'react-bootstrap';
 import { SmallInput } from '../../../shared/SmallInput';
-import React from 'react';
-import {update_Material} from '../../../service/MaterialService';
-import {useNavigate,useLocation } from 'react-router-dom'
+import React,{useEffect, useState} from 'react';
+import {create_Material} from '../../../service/MaterialService';
+import {useNavigate } from 'react-router-dom'
 import './material.scss'
-const UpdateMaterial = () => {
-  const location =useLocation();
+
+const CreateMaterial = () => {
+  const [state, setstate] = useState([])
   let navigate= useNavigate()
  const formik = useFormik({
   initialValues:{
-    materialname:location.state.materialname,
-    description:location.state.description,
-    amount:location.state.amount,
-    month:location.state.month,
-    quantity:location.state.quantity,
-    date:location.state.date
+    materialname:'',
+    description:'',
+    amount:'',
+    month:'',
+    quantity:'',
+    date:''
   },
   //validationSchema:ValidationAmendments,
   onSubmit: values => {
@@ -23,8 +24,8 @@ const UpdateMaterial = () => {
       
     },
  })
- const updateProduct=()=>{
-  update_Material(location.state._id,formik.values).then(res=>{
+ const createProduct=()=>{
+  create_Material(formik.values).then(res=>{
     console.log(res.data.result)
     navigate('/material')
   })
@@ -32,8 +33,6 @@ const UpdateMaterial = () => {
  const handleCancle =()=>{
    navigate('/material')
  }
- console.log("location from UpdateMat",location.state._id
- )
   return (
     <div className='container p-2 col-11 col-sm-10 col-lg-12 mt-5'>
           
@@ -136,7 +135,7 @@ const UpdateMaterial = () => {
         
         <Row className='my-3 mx-1'>
         <Col m={6} sm={12} ml-0 lg={6}>
-        <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 float-right' onClick={()=>updateProduct()}>Submit</button>
+        <button type="submit" className='btn  btn-outline-info ml-0 col-sm-10 col-lg-4 my-1 float-right' onClick={()=>createProduct()}>Submit</button>
         
         </Col>
         <Col m={6} sm={12} ml-0 lg={6}>
@@ -149,4 +148,4 @@ const UpdateMaterial = () => {
   )
 }
 
-export default UpdateMaterial
+export default CreateMaterial

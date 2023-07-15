@@ -1,0 +1,38 @@
+.logincontainer{
+    height: 100vh;
+    width: 100%;
+   background-image: url("../../../asset/login.jpg");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size:100% 100%; 
+   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3);;
+}
+.log-h1{
+    color: white;
+    padding-top: 10%;
+}
+.formcontainer{
+     /* border: 2px solid white; */
+    width: 35%;
+    border-radius: 5px;
+    padding: 30px;
+    height: max-content;
+    -webkit-box-shadow: 3px 3px 24px 16px rgba(214,199,214,1);
+-moz-box-shadow: 3px 3px 24px 16px rgba(214,199,214,1);
+box-shadow: 3px 3px 24px 16px rgba(214,199,214,1);
+
+}
+.login-input{
+    background: none !important;
+    border: 2px solid white;
+}
+.label{
+    color: white;
+    font-size: 19px;
+}
+.link{
+    color: white;
+    font-size: 19px;
+    text-decoration: none;
+    text-align: center;
+}

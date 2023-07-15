@@ -4,6 +4,8 @@ import  Stock   from "../stock/Stock";
 import Piechart from "./Piechart";
 import { Card } from "./Card";
 import { Row,Col } from 'react-bootstrap'
+import MinimumStock from "../stockdetails/MinimumStock";
+import OutofStock from "../stockdetails/OutofStock";
 const Dashboard = () => {
   return (
     <div className="container dashbord">
@@ -13,6 +15,17 @@ const Dashboard = () => {
         <div className="card-class"><Card/></div>
         </Col>
       </Row>
+      {/* <Row className="d-flex justify-content-between mx-2 my-2">
+        <Col lg={5} sm={12} style={{padding:0}} className="minimumstock ml-3">
+        <h3 className="Title text-left my-2 mx-1">
+        Minimum Stock</h3><MinimumStock />
+        </Col>
+        <Col lg={5} sm={12} style={{padding:0}} className="minimumstock ">
+        <h3 className="Title text-left my-2 mx-1">
+        Out Of Stock</h3>
+        <OutofStock />
+        </Col>
+      </Row> */}
       {/* <div className="card-class"><Card/></div> */}
       <Row>
         <Col lg={8} sm={12} style={{padding:0}}>

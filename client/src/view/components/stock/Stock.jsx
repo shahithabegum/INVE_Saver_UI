@@ -1,8 +1,10 @@
 import React,{useEffect, useMemo, useState} from 'react'
+
 import MaterialReactTable from 'material-react-table';
 import { getStock } from '../../../service/StockService';
 
  const Stock = () => {
+     
       const [stockdata, setStockdata] = useState([])
       useEffect(() => {
         Stock()
@@ -15,10 +17,24 @@ import { getStock } from '../../../service/StockService';
           {
             accessorKey: 'materialname', //access nested data with dot notation
             header: 'Material Name',
+            Cell: ({ cell, row }) => (
+              <div>
+                {row.original.stock ===0
+                  ?<div style={{color:"red"}}>{cell.getValue()}</div> 
+                  : cell.getValue()}
+              </div>
+            ),
           },
           {
             accessorKey: 'stock',
             header: 'Total No Of Stock',
+            Cell: ({ cell, row }) => (
+              <div>
+                {row.original.stock === 0
+                  ?<div style={{color:"red"}}>Out Of Stock</div> 
+                  : cell.getValue()}
+              </div>
+            ),
           },
          
         
@@ -33,11 +49,12 @@ import { getStock } from '../../../service/StockService';
          enableStickyHeader
       muiTableContainerProps={{ sx: { maxHeight: '500px' } }}
       
-    //   enableRowSelection
+      
     //   muiSelectCheckboxProps={({ row }) => ({
     //     color: '#8186D5',
        
     //   })}
+  
       muiTableBodyProps={{
         sx: {
           '& tr:nth-of-type(odd)': {

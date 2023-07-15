@@ -21,7 +21,7 @@ const Topbar = () => {
           </a>
           <ul className="dropdown-menu mx-2" aria-labelledby="navbarDropdownMenuLink">
             <li><a className="dropdown-item" href="#">Logout</a></li>
-            <li><a className="dropdown-item" href="#">Change Password</a></li>
+            <li><a className="dropdown-item" href="/changepassword">Change Password</a></li>
           
           </ul>
         </li>
